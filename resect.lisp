@@ -492,7 +492,7 @@
   (record declaration))
 (cffi:defcfun ("resect_field_decl_is_bitfield" field-declaration-bitfield-p) :boolean
   (record declaration))
-(cffi:defcfun ("resect_field_decl-get_width" field-declaration-width) :long-long
+(cffi:defcfun ("resect_field_decl_get_width" field-declaration-width) :long-long
   (record declaration))
 
 ;;;
