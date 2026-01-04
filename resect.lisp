@@ -25,6 +25,7 @@
            #:declaration-template-arguments
            #:declaration-template-specializations
            #:declaration-template
+           #:declaration-root-template
            #:declaration-partially-specialized-p
            #:declaration-forward-p
            #:declaration-source
@@ -455,6 +456,8 @@
 (cffi:defcfun ("resect_decl_get_access_specifier" declaration-access-specifier) access-specifier
   (declaration declaration))
 (cffi:defcfun ("resect_decl_get_template" declaration-template) declaration
+  (declaration declaration))
+(cffi:defcfun ("resect_decl_get_root_template" declaration-root-template) declaration
   (declaration declaration))
 (cffi:defcfun ("resect_decl_is_template" declaration-template-p) :boolean
   (declaration declaration))
