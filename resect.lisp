@@ -30,8 +30,6 @@
            #:declaration-forward-p
            #:declaration-source
            #:declaration-linkage
-           #:declaration-inclusion-status
-
 
            #:location-name
            #:location-line
@@ -308,14 +306,6 @@
   (:neon 8))
 
 
-(cffi:defcenum resect-inclusion-status
-  (:excluded 0)
-  (:weakly-excluded 1)
-  (:weakly-included 2)
-  (:weakly-enforced 3)
-  (:included 4))
-
-
 (cffi:defctype collection :pointer)
 (cffi:defctype iterator :pointer)
 (cffi:defctype type :pointer)
@@ -474,8 +464,6 @@
 (cffi:defcfun ("resect_decl_get_source" declaration-source) :string
   (declaration declaration))
 (cffi:defcfun ("resect_decl_get_linkage" declaration-linkage) linkage-kind
-  (declaration declaration))
-(cffi:defcfun ("resect_decl_get_inclusion_status" declaration-inclusion-status) resect-inclusion-status
   (declaration declaration))
 
 ;;;
