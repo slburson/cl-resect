@@ -3,6 +3,7 @@
   (:export #:parse
            #:free
 
+           #:collection-size
            #:collection-iterator
            #:iterator-next
            #:iterator-value
@@ -321,6 +322,8 @@
 ;;;
 ;;; COLLECTION
 ;;;
+(cffi:defcfun ("resect_collection_size" collection-size) :unsigned-int
+  (collection collection))
 (cffi:defcfun ("resect_collection_iterator" collection-iterator) iterator
   (collection collection))
 (cffi:defcfun ("resect_iterator_next" iterator-next) :boolean
