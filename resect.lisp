@@ -51,6 +51,8 @@
            #:field-name
            #:field-type
            #:field-offset
+           #:type-methods
+           #:type-base-classes
 
            #:template-parameter-kind
 
@@ -370,6 +372,10 @@
 (cffi:defcfun ("resect_type_is_undeclared" type-undeclared-p) :boolean
   (type type))
 (cffi:defcfun ("resect_type_fields" type-fields) collection
+  (type type))
+(cffi:defcfun ("resect_type_methods" type-methods) collection
+  (type type))
+(cffi:defcfun ("resect_type_base_classes" type-base-classes) collection
   (type type))
 (cffi:defcfun ("resect_field_get_name" field-name) :string
   (field field))
