@@ -41,19 +41,19 @@
            #:type-name
            #:type-size
            #:type-alignment
-           #:type-field-offset
+           #:type-field-offset-by-name
            #:type-const-qualified-p
            #:type-plain-old-data-p
            #:type-declaration
            #:type-template-arguments
            #:type-undeclared-p
            #:type-fields
-           #:field-name
-           #:field-type
-           #:field-offset
+           #:type-field-name
+           #:type-field-type
+           #:type-field-offset
            #:type-methods
-           #:method-name
-           #:method-type
+           #:type-method-name
+           #:type-method-type
            #:type-base-classes
 
            #:template-parameter-kind
@@ -314,8 +314,8 @@
 (cffi:defctype collection :pointer)
 (cffi:defctype iterator :pointer)
 (cffi:defctype type :pointer)
-(cffi:defctype field :pointer)
-(cffi:defctype method :pointer)
+(cffi:defctype type-field :pointer)
+(cffi:defctype type-method :pointer)
 (cffi:defctype declaration :pointer)
 (cffi:defctype location :pointer)
 (cffi:defctype translation-unit :pointer)
@@ -361,7 +361,7 @@
   (type type))
 (cffi:defcfun ("resect_type_alignof" type-alignment) :long-long
   (type type))
-(cffi:defcfun ("resect_type_offsetof" type-field-offset) :long-long
+(cffi:defcfun ("resect_type_offsetof" type-field-offset-by-name) :long-long
   (type type)
   (field :string))
 (cffi:defcfun ("resect_type_is_const_qualified" type-const-qualified-p) :boolean
@@ -380,16 +380,16 @@
   (type type))
 (cffi:defcfun ("resect_type_base_classes" type-base-classes) collection
   (type type))
-(cffi:defcfun ("resect_field_get_name" field-name) :string
-  (field field))
-(cffi:defcfun ("resect_field_get_type" field-type) type
-  (field field))
-(cffi:defcfun ("resect_field_get_offset" field-offset) :long-long
-  (field field))
-(cffi:defcfun ("resect_method_get_name" method-name) :string
-  (method method))
-(cffi:defcfun ("resect_method_get_type" method-type) type
-  (method method))
+(cffi:defcfun ("resect_type_field_get_name" type-field-name) :string
+  (field type-field))
+(cffi:defcfun ("resect_type_field_get_type" type-field-type) type
+  (field type-field))
+(cffi:defcfun ("resect_type_field_get_offset" type-field-offset) :long-long
+  (field type-field))
+(cffi:defcfun ("resect_type_method_get_name" type-method-name) :string
+  (method type-method))
+(cffi:defcfun ("resect_type_method_get_type" type-method-type) type
+  (method type-method))
 
 
 ;;;
