@@ -52,6 +52,8 @@
            #:field-type
            #:field-offset
            #:type-methods
+           #:method-name
+           #:method-type
            #:type-base-classes
 
            #:template-parameter-kind
@@ -313,6 +315,7 @@
 (cffi:defctype iterator :pointer)
 (cffi:defctype type :pointer)
 (cffi:defctype field :pointer)
+(cffi:defctype method :pointer)
 (cffi:defctype declaration :pointer)
 (cffi:defctype location :pointer)
 (cffi:defctype translation-unit :pointer)
@@ -383,6 +386,10 @@
   (field field))
 (cffi:defcfun ("resect_field_get_offset" field-offset) :long-long
   (field field))
+(cffi:defcfun ("resect_method_get_name" method-name) :string
+  (method method))
+(cffi:defcfun ("resect_method_get_type" method-type) type
+  (method method))
 
 
 ;;;
