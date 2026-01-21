@@ -56,7 +56,9 @@
            #:type-method-id
            #:type-method-name
            #:type-method-mangled-name
+           #:type-method-source
            #:type-method-type
+           #:type-method-static-p
            #:type-base-classes
 
            #:template-parameter-kind
@@ -396,6 +398,10 @@
 (cffi:defcfun ("resect_type_method_get_name" type-method-name) :string
   (method type-method))
 (cffi:defcfun ("resect_type_method_get_mangled_name" type-method-mangled-name) :string
+  (method type-method))
+(cffi:defcfun ("resect_type_method_get_source" type-method-source) :string
+  (method type-method))
+(cffi:defcfun ("resect_type_method_is_static" type-method-static-p) :boolean
   (method type-method))
 (cffi:defcfun ("resect_type_method_get_type" type-method-type) type
   (method type-method))
