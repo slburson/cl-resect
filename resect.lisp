@@ -48,11 +48,14 @@
            #:type-template-arguments
            #:type-undeclared-p
            #:type-fields
+           #:type-field-id
            #:type-field-name
            #:type-field-type
            #:type-field-offset
            #:type-methods
+           #:type-method-id
            #:type-method-name
+           #:type-method-mangled-name
            #:type-method-type
            #:type-base-classes
 
@@ -380,13 +383,19 @@
   (type type))
 (cffi:defcfun ("resect_type_base_classes" type-base-classes) collection
   (type type))
+(cffi:defcfun ("resect_type_field_get_id" type-field-id) :string
+  (field type-field))
 (cffi:defcfun ("resect_type_field_get_name" type-field-name) :string
   (field type-field))
 (cffi:defcfun ("resect_type_field_get_type" type-field-type) type
   (field type-field))
 (cffi:defcfun ("resect_type_field_get_offset" type-field-offset) :long-long
   (field type-field))
+(cffi:defcfun ("resect_type_method_get_id" type-method-id) :string
+  (method type-method))
 (cffi:defcfun ("resect_type_method_get_name" type-method-name) :string
+  (method type-method))
+(cffi:defcfun ("resect_type_method_get_mangled_name" type-method-mangled-name) :string
   (method type-method))
 (cffi:defcfun ("resect_type_method_get_type" type-method-type) type
   (method type-method))
