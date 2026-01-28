@@ -146,8 +146,8 @@
   (:unknown 0)
   (:void 2)
   (:bool 3)
-  (:char-u 4)
-  (:unsigned-char 5)
+  (:char-u 4) ;; implicitly unsigned
+  (:unsigned-char 5) ;; explicitly unsigned
   (:char16 6)
   (:char32 7)
   (:unsigned-short 8)
@@ -155,8 +155,8 @@
   (:unsigned-long 10)
   (:unsigned-long-long 11)
   (:unsigned-int128 12)
-  (:char-s 13)
-  (:char 14)
+  (:char-s 13) ;; implicitly signed
+  (:signed-char 14) ;; explicitly signed
   (:wchar 15)
   (:short 16)
   (:int 17)
