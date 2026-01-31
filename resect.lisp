@@ -72,6 +72,7 @@
            #:array-element-type
 
            #:pointer-pointee-type
+           #:member-pointer-owning-type
 
            #:reference-pointee-type
            #:reference-lvalue-p
@@ -431,6 +432,9 @@
 ;;; POINTER
 ;;;
 (cffi:defcfun ("resect_pointer_get_pointee_type" pointer-pointee-type) type
+  (type type))
+
+(cffi:defcfun ("resect_member_pointer_get_owning_type" member-pointer-owning-type) type
   (type type))
 
 
