@@ -319,6 +319,15 @@
   (:neon 8))
 
 
+(cffi:defcenum resect-option-diagnostics-level
+  (:none 0)
+  (:error 1)
+  (:warning 2)
+  (:info 3)
+  (:debug 4)
+  (:all 5))
+
+
 (cffi:defctype collection :pointer)
 (cffi:defctype iterator :pointer)
 (cffi:defctype type :pointer)
@@ -676,6 +685,9 @@
   (opts options))
 (cffi:defcfun ("resect_options_print_diagnostics" options-enable-diagnostics) :void
   (opts options))
+(cffi:defcfun ("resect_options_diagnostics_level" options-diagnostics-level) :void
+  (opts options)
+  (level resect-option-diagnostics-level))
 (cffi:defcfun ("resect_options_free" destroy-options) :void
   (opts options))
 
