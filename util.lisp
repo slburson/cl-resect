@@ -40,6 +40,8 @@
                                 exclude-sources
                                 enforce-definitions
                                 enforce-sources
+                                ignore-definitions
+                                ignore-sources
                                 defines)
                         &body body)
   (alexandria:with-gensyms (path val name)
@@ -86,6 +88,12 @@
                 ,@(when enforce-sources
                     `((loop for ,val in ,enforce-sources
                             do (%resect:options-enforce-source ,opts (namestring ,val)))))
+                ,@(when ignore-definitions
+                    `((loop for ,val in ,ignore-definitions
+                            do (%resect:options-ignore-definition ,opts ,val))))
+                ,@(when ignore-sources
+                    `((loop for ,val in ,ignore-sources
+                            do (%resect:options-ignore-source ,opts (namestring ,val)))))
                 ,@(when defines
                     `((loop for (,name ,val) in ,defines
                             do (%resect:options-add-define ,opts ,name ,val))))
@@ -107,6 +115,8 @@
                          exclude-sources
                          enforce-definitions
                          enforce-sources
+                         ignore-definitions
+                         ignore-sources
                          defines)
   (with-options (opts :include-paths include-paths
                       :framework-paths framework-paths
@@ -121,6 +131,8 @@
                       :exclude-sources exclude-sources
                       :enforce-definitions enforce-definitions
                       :enforce-sources enforce-sources
+                      :ignore-definitions ignore-definitions
+                      :ignore-sources ignore-sources
                       :defines defines)
     (loop for intrinsic in intrinsics
           do (%resect:options-enable-intrinsic opts intrinsic))
@@ -141,6 +153,8 @@
                                                   exclude-sources
                                                   enforce-definitions
                                                   enforce-sources
+                                                  ignore-definitions
+                                                  ignore-sources
                                                   defines)
                                  &body body)
   `(let ((,unit (parse ,filename :include-paths ,include-paths
@@ -157,6 +171,8 @@
                                  :exclude-sources ,exclude-sources
                                  :enforce-definitions ,enforce-definitions
                                  :enforce-sources ,enforce-sources
+                                 :ignore-definitions ,ignore-definitions
+                                 :ignore-sources ,ignore-sources
                                  :defines ,defines)))
      (unwind-protect
           (progn ,@body)

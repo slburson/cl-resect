@@ -130,6 +130,8 @@
            #:options-exclude-source
            #:options-enforce-definition
            #:options-enforce-source
+           #:options-ignore-definition
+           #:options-ignore-source
            #:options-add-include-path
            #:options-add-framework-path
            #:options-add-language
@@ -659,6 +661,12 @@
   (opts options)
   (pattern :string))
 (cffi:defcfun ("resect_options_enforce_source" options-enforce-source) :void
+  (opts options)
+  (pattern :string))
+(cffi:defcfun ("resect_options_ignore_definition" options-ignore-definition) :void
+  (opts options)
+  (pattern :string))
+(cffi:defcfun ("resect_options_ignore_source" options-ignore-source) :void
   (opts options)
   (pattern :string))
 (cffi:defcfun ("resect_options_intrinsic" options-enable-intrinsic) :void
