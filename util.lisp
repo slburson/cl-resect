@@ -29,6 +29,7 @@
 
 (defmacro with-options ((opts &key include-paths
                                 framework-paths
+                                resource-paths
                                 language
                                 standard
                                 target
@@ -42,7 +43,8 @@
                                 enforce-sources
                                 ignore-definitions
                                 ignore-sources
-                                defines)
+                                defines
+                                diagnostics-level)
                         &body body)
   (alexandria:with-gensyms (path val name)
     (alexandria:once-only (language standard target)
@@ -55,6 +57,9 @@
                 ,@(when framework-paths
                     `((loop for ,path in ,framework-paths
                             do (%resect:options-add-include-path ,opts (namestring ,path)))))
+                ,@(when resource-paths
+                    `((loop for ,path in ,resource-paths
+                            do (%resect:options-add-resource-path ,opts (namestring ,path)))))
                 ,@(when language
                     `((when ,language
                         (%resect:options-add-language ,opts ,language))))
@@ -97,12 +102,16 @@
                 ,@(when defines
                     `((loop for (,name ,val) in ,defines
                             do (%resect:options-add-define ,opts ,name ,val))))
+                ,@(when diagnostics-level
+                    `((when ,diagnostics-level
+                        (%resect:options-diagnostics-level ,opts ,diagnostics-level))))
                 ,@body)
            (%resect:destroy-options ,opts))))))
 
 
 (defun parse (filename &key include-paths
                          framework-paths
+                         resource-paths
                          language
                          standard
                          target
@@ -118,11 +127,12 @@
                          ignore-definitions
                          ignore-sources
                          defines)
-  (with-options (opts :include-paths include-paths
-                      :framework-paths framework-paths
-                      :language language
+  (with-options (opts :language language
                       :standard standard
                       :target target
+                      :include-paths include-paths
+                      :framework-paths framework-paths
+                      :resource-paths resource-paths
                       :single-header-mode single-header-mode
                       :diagnostics diagnostics
                       :include-definitions include-definitions
@@ -141,6 +151,7 @@
 
 (defmacro with-translation-unit ((unit filename &key include-paths
                                                   framework-paths
+                                                  resource-paths
                                                   language
                                                   standard
                                                   target
@@ -159,6 +170,7 @@
                                  &body body)
   `(let ((,unit (parse ,filename :include-paths ,include-paths
                                  :framework-paths ,framework-paths
+                                 :resource-paths ,resource-paths
                                  :language ,language
                                  :standard ,standard
                                  :target ,target

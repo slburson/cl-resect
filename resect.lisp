@@ -134,6 +134,7 @@
            #:options-ignore-source
            #:options-add-include-path
            #:options-add-framework-path
+           #:options-add-resource-path
            #:options-add-language
            #:options-add-standard
            #:options-add-target
@@ -141,6 +142,7 @@
            #:options-enable-intrinsic
            #:options-enable-single-header-mode
            #:options-enable-diagnostics
+           #:options-diagnostics-level
            #:destroy-options))
 (cl:in-package :%resect)
 
@@ -638,6 +640,9 @@
   (opts options)
   (path :string))
 (cffi:defcfun ("resect_options_add_framework_path" options-add-framework-path) :void
+  (opts options)
+  (path :string))
+(cffi:defcfun ("resect_options_add_resource_path" options-add-resource-path) :void
   (opts options)
   (path :string))
 (cffi:defcfun ("resect_options_add_language" options-add-language) :void
