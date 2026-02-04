@@ -57,7 +57,7 @@
            #:type-method-name
            #:type-method-mangled-name
            #:type-method-source
-           #:type-method-type
+           #:type-method-prototype
            #:type-method-declaration
            #:type-method-static-p
            #:type-base-classes
@@ -418,7 +418,7 @@
   (method type-method))
 (cffi:defcfun ("resect_type_method_is_static" type-method-static-p) :boolean
   (method type-method))
-(cffi:defcfun ("resect_type_method_get_type" type-method-type) type
+(cffi:defcfun ("resect_type_method_get_proto" type-method-prototype) type
   (method type-method))
 (cffi:defcfun ("resect_type_method_get_decl" type-method-declaration) declaration
   (method type-method))
