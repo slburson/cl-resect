@@ -60,6 +60,7 @@
            #:type-method-prototype
            #:type-method-declaration
            #:type-method-static-p
+           #:type-method-const-p
            #:type-base-classes
 
            #:template-parameter-kind
@@ -417,6 +418,8 @@
 (cffi:defcfun ("resect_type_method_get_source" type-method-source) :string
   (method type-method))
 (cffi:defcfun ("resect_type_method_is_static" type-method-static-p) :boolean
+  (method type-method))
+(cffi:defcfun ("resect_type_method_is_const" type-method-const-p) :boolean
   (method type-method))
 (cffi:defcfun ("resect_type_method_get_proto" type-method-prototype) type
   (method type-method))
