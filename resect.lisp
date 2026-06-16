@@ -61,6 +61,8 @@
            #:type-method-declaration
            #:type-method-static-p
            #:type-method-const-p
+           #:type-method-defaulted-p
+           #:type-method-constructor-kind
            #:type-base-classes
 
            #:template-parameter-kind
@@ -115,6 +117,7 @@
            #:method-virtual-p
            #:method-const-p
            #:method-deleted-p
+           #:method-constructor-p
            #:method-storage-class
            #:method-calling-convention
            #:method-ref-qualifier
@@ -276,6 +279,15 @@
   (:private 3))
 
 
+(cffi:defcenum constructor-kind
+  (:invalid 0)  ; i.e., not a constructor
+  (:default 1)
+  (:copy 2)
+  (:move 3)
+  (:converting 4)
+  (:other 5))
+
+
 (cffi:defcenum template-argument-kind
   (:unknown 0)
   (:null 1)
@@ -428,6 +440,10 @@
   (method type-method))
 (cffi:defcfun ("resect_type_method_is_const" type-method-const-p) :boolean
   (method type-method))
+(cffi:defcfun ("resect_type_method_is_defaulted" type-method-defaulted-p) :boolean
+  (method type-method))
+(cffi:defcfun ("resect_type_method_constructor_kind" type-method-constructor-kind) constructor-kind
+  (method type-method))
 (cffi:defcfun ("resect_type_method_get_proto" type-method-prototype) type
   (method type-method))
 (cffi:defcfun ("resect_type_method_get_decl" type-method-declaration) declaration
@@ -573,6 +589,8 @@
 (cffi:defcfun ("resect_method_is_const" method-const-p) :boolean
   (method declaration))
 (cffi:defcfun ("resect_method_is_deleted" method-deleted-p) :boolean
+  (method declaration))
+(cffi:defcfun ("resect_method_is_constructor" method-constructor-p) :boolean
   (method declaration))
 (cffi:defcfun ("resect_method_get_storage_class" method-storage-class) storage-class
   (method declaration))
