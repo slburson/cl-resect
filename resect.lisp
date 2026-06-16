@@ -61,6 +61,7 @@
            #:type-method-declaration
            #:type-method-static-p
            #:type-method-const-p
+           #:type-method-defaulted-p
            #:type-method-constructor-kind
            #:type-base-classes
 
@@ -439,6 +440,8 @@
 (cffi:defcfun ("resect_type_method_is_static" type-method-static-p) :boolean
   (method type-method))
 (cffi:defcfun ("resect_type_method_is_const" type-method-const-p) :boolean
+  (method type-method))
+(cffi:defcfun ("resect_type_method_is_defaulted" type-method-defaulted-p) :boolean
   (method type-method))
 (cffi:defcfun ("resect_type_method_constructor_kind" type-method-constructor-kind) constructor-kind
   (method type-method))
