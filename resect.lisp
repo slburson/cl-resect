@@ -103,6 +103,7 @@
            #:function-inlined-p
            #:function-storage-class
            #:function-calling-convention
+           #:function-deleted-p
 
            #:field-declaration-offset
            #:field-declaration-bitfield-p
@@ -650,6 +651,8 @@
 (cffi:defcfun ("resect_function_get_storage_class" function-storage-class) storage-class
   (function declaration))
 (cffi:defcfun ("resect_function_get_calling_convention" function-calling-convention) calling-convention
+  (function declaration))
+(cffi:defcfun ("resect_function_is_deleted" function-deleted-p) :boolean
   (function declaration))
 
 
