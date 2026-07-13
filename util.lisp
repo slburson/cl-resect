@@ -45,7 +45,7 @@
                                 ignore-sources
                                 defines
                                 diagnostics-level
-				visibility)
+                                visibility)
                         &body body)
   (alexandria:with-gensyms (path val name)
     (alexandria:once-only (language standard target)
@@ -106,9 +106,9 @@
                 ,@(when diagnostics-level
                     `((when ,diagnostics-level
                         (%resect:options-diagnostics-level ,opts ,diagnostics-level))))
-		,@(when visibility
-		    `((when ,visibility
-			(%resect:options-visibility ,opts ,visibility))))
+                ,@(when visibility
+                    `((when ,visibility
+                        (%resect:options-visibility ,opts ,visibility))))
                 ,@body)
            (%resect:destroy-options ,opts))))))
 
@@ -121,7 +121,7 @@
                          target
                          single-header-mode
                          (diagnostics t)
-			 diagnostics-level
+                         diagnostics-level
                          intrinsics
                          include-definitions
                          include-sources
@@ -132,7 +132,7 @@
                          ignore-definitions
                          ignore-sources
                          defines
-			 visibility)
+                         visibility)
   (with-options (opts :language language
                       :standard standard
                       :target target
@@ -141,7 +141,7 @@
                       :resource-paths resource-paths
                       :single-header-mode single-header-mode
                       :diagnostics diagnostics
-		      :diagnostics-level diagnostics-level
+                      :diagnostics-level diagnostics-level
                       :include-definitions include-definitions
                       :include-sources include-sources
                       :exclude-definitions exclude-definitions
@@ -151,7 +151,7 @@
                       :ignore-definitions ignore-definitions
                       :ignore-sources ignore-sources
                       :defines defines
-		      :visibility visibility)
+                      :visibility visibility)
     (loop for intrinsic in intrinsics
           do (%resect:options-enable-intrinsic opts intrinsic))
     (%resect:parse (namestring filename) opts)))
@@ -165,7 +165,7 @@
                                                   target
                                                   single-header-mode
                                                   (diagnostics t)
-						  diagnostics-level
+                                                  diagnostics-level
                                                   intrinsics
                                                   include-definitions
                                                   include-sources
@@ -176,7 +176,7 @@
                                                   ignore-definitions
                                                   ignore-sources
                                                   defines
-						  visibility)
+                                                  visibility)
                                  &body body)
   `(let ((,unit (parse ,filename :include-paths ,include-paths
                                  :framework-paths ,framework-paths
@@ -186,7 +186,7 @@
                                  :target ,target
                                  :single-header-mode ,single-header-mode
                                  :diagnostics ,diagnostics
-				 :diagnostics-level ,diagnostics-level
+                                 :diagnostics-level ,diagnostics-level
                                  :intrinsics ,intrinsics
                                  :include-definitions ,include-definitions
                                  :include-sources ,include-sources
@@ -197,7 +197,7 @@
                                  :ignore-definitions ,ignore-definitions
                                  :ignore-sources ,ignore-sources
                                  :defines ,defines
-				 :visibility ,visibility)))
+                                 :visibility ,visibility)))
      (unwind-protect
           (progn ,@body)
        (%resect:free ,unit))))
