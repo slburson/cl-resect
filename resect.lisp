@@ -101,6 +101,7 @@
            #:function-result-type
            #:function-variadic-p
            #:function-inlined-p
+           #:function-noexcept-p
            #:function-storage-class
            #:function-calling-convention
            #:function-deleted-p
@@ -122,6 +123,8 @@
            #:method-pure-virtual-p
            #:method-virtual-p
            #:method-const-p
+           #:method-inlined-p
+           #:method-noexcept-p
            #:method-deleted-p
            #:method-constructor-p
            #:method-storage-class
@@ -605,6 +608,10 @@
   (method declaration))
 (cffi:defcfun ("resect_method_is_const" method-const-p) :boolean
   (method declaration))
+(cffi:defcfun ("resect_method_is_inlined" method-inlined-p) :boolean
+  (method declaration))
+(cffi:defcfun ("resect_method_is_noexcept" method-noexcept-p) :boolean
+  (method declaration))
 (cffi:defcfun ("resect_method_is_deleted" method-deleted-p) :boolean
   (method declaration))
 (cffi:defcfun ("resect_method_is_constructor" method-constructor-p) :boolean
@@ -647,6 +654,8 @@
 (cffi:defcfun ("resect_function_is_variadic" function-variadic-p) :boolean
   (function declaration))
 (cffi:defcfun ("resect_function_is_inlined" function-inlined-p) :boolean
+  (function declaration))
+(cffi:defcfun ("resect_function_is_noexcept" function-noexcept-p) :boolean
   (function declaration))
 (cffi:defcfun ("resect_function_get_storage_class" function-storage-class) storage-class
   (function declaration))
