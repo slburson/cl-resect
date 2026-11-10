@@ -591,6 +591,9 @@
   (class declaration))
 (cffi:defcfun ("resect_record_has_inherited_constructor" record-has-inherited-constructor-p) :boolean
   (class declaration))
+;;; A C11 anonymous struct/union.
+(cffi:defcfun ("resect_record_is_anonymous_subrecord" record-is-anonymous-subrecord-p) :boolean
+  (class declaration))
 
 
 ;;;
